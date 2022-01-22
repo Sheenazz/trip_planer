@@ -1,0 +1,11 @@
+{% extends 'planer/base.html' %}
+
+{% block content %}
+    {% for trip in trips %}
+        <div class="">
+            <p class="description"><a href="{% url 'trip_detail' pk=trip.pk %}">Trip: {{ trip.destination }}</a></p>
+            <p><a href="{{ trip.accommodation_link|linebreaksbr }}">Link do atrakcji</a></p>
+            <p>Trip: {{ trip.destination|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

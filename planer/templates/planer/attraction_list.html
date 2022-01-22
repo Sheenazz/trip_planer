@@ -1,0 +1,12 @@
+{% extends 'planer/base.html' %}
+
+{% block content %}
+    {% for attraction in attractions %}
+        <div class="">
+            <p class="description"><a href="{% url 'attraction_detail' pk=attraction.pk %}">Attraction: {{ attraction.name_of_attraction }}</a></p>
+            <p class="description">Atrakcja: {{ attraction.name_of_attraction }}</p>
+            <p><a href="{{ attraction.attraction_url|linebreaksbr }}">Link do atrakcji</a></p>
+            <p>Opis atrakcji: {{ attraction.attraction_description|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'planer/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="attraction">
+        <p><b>Attraction:</b> {{ attraction.name_of_attraction }}</p>
+        <p><b>Attraction's description:</b> {{ attraction.attraction_description }}</p>
+        <p><b>Link to attraction:</b> {{ attraction.attraction_url }}</p>
+        <p><b>Area:</b> {{ attraction.area }}</p>
+        <button type="submit" class="save btn btn-default"><a href="{% url 'attraction_edit' pk=attraction.id %}">Edit</a></button>
+    </div>
+{% endblock %}
