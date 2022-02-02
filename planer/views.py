@@ -32,6 +32,14 @@ def map(request):
     else:
         form = SearchForm()
     address = Search.objects.all().last()
+    if address == None:
+        m = folium.Map(location=[19, -21], zoom_start=2)
+        m = m._repr_html_()
+        context = {
+            'm': m,
+            'form': form,
+        }
+        return render(request, 'planer/map.html', context)
     location = geocoder.osm(address)
     lat = location.lat
     lng = location.lng
