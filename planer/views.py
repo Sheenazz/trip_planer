@@ -97,7 +97,25 @@ def trip_edit(request, pk):
 
 def trip_detail(request, pk):
     myarea = get_object_or_404(Area, pk=pk)
-    return render(request, 'planer/trip_detail.html', {'area': myarea})
+
+    location = geocoder.osm(myarea.destination)
+    lat = location.lat
+    lng = location.lng
+    country = location.country
+    if lat == None or lng == None:
+        #address.delete()
+        return HttpResponse('Your address input is invalid')
+    # create map object
+    m = folium.Map(location=[50, 17], zoom_start=6)
+    folium.Marker([lat, lng], tooltip='Click for more',
+                  popup=country).add_to(m)
+    # get HTML representation of map object
+    m = m._repr_html_()
+
+    # m = folium.Map(location=[19, -21], zoom_start=2)
+    # m = m._repr_html_()
+
+    return render(request, 'planer/trip_detail.html', {'area': myarea, 'm': m})
 
 
 def trip_attractions(request):

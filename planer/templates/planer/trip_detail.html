@@ -2,14 +2,17 @@
 {% load static %}
 
 {% block content %}
-    <div class="trip">
-        <p><b>Destination:</b> {{ area.destination }}</p>
-        <p><b>Date of arrival:</b> {{ area.date_of_arrival }}</p>
-        <p><b>Date of departure:</b> {{ area.date_of_departure }}</p>
-        <p><b>Link to map:</b> {{ area.map_link }}</p>
-        <p><b>Link to accommodation:</b> {{ area.accommodation_link }}</p>
-        <button type="submit" class="save btn btn-default"><a href="{% url 'trip_edit' pk=area.id %}">Edit</a></button>
-        <button type="button" class="btn btn-info"><a href="/trip/attractions">Add Attractions</a></button>
-        <button type="button" class="btn btn-info"><a href="/trip/restaurants">Add Restaurants</a></button>
-    </div>
+
+              <div class="trip">
+                <p><b>Destination:</b> {{ area.destination }}</p>
+                <p><b>Date of arrival:</b> {{ area.date_of_arrival }}</p>
+                <p><b>Date of departure:</b> {{ area.date_of_departure }}</p>
+                <p><b>Link to map:</b> {{ m|safe }}</p>
+                <p><b>Link to accommodation:</b> {{ area.accommodation_link }}</p>
+                <button type="submit" class="save btn btn-default"><a href="{% url 'trip_edit' pk=area.id %}">Edit</a></button>
+                <button type="button" class="btn btn-info"><a href="/trip/attractions">Add Attractions</a></button>
+                <button type="button" class="btn btn-info"><a href="/trip/restaurants">Add Restaurants</a></button>
+              </div>
+
+
 {% endblock %}
